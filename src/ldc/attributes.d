@@ -227,6 +227,21 @@ struct optStrategy {
  }
 
 /**
+ * When applied to a function, indicates that ALL pointer parameters are pointing
+ * to non-overlapping memory regions, allowing for further optimizations. This
+ * constraint has to be ensured by the caller of the function!
+ * Maps to 'noalias' in LLVM.
+ *
+ * Experimental!
+ *
+ * This is similar to the 'restrict' keyword in C.
+ */
+ immutable restrictAll = _restrictAll();
+ private struct _restrictAll
+ {
+ }
+
+/**
  * When applied to a global variable or function, causes it to be emitted to a
  * non-standard object file/executable section.
  *
